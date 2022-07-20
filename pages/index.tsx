@@ -1,30 +1,50 @@
-import type { NextPage } from 'next'
-import Head from 'next/head'
-import Image from 'next/image'
-import Banner from '../components/Banner'
-import Header from '../components/Header'
-import requests from '../utils/requests'
+import Head from "next/head";
+import Image from "next/image";
+import Banner from "../components/Banner";
+import Header from "../components/Header";
+import { Movie } from "../typings";
+import requests from "../utils/requests";
 
-const Home: NextPage = () => {
+interface Props {
+  netflixOriginals: Movie[];
+  trending: Movie[];
+  topRated: Movie[];
+  actionMovies: Movie[];
+  comedyMovies: Movie[];
+  horrorMovies: Movie[];
+  romanceMovies: Movie[];
+  animationMovies: Movie[];
+  kidsMovies: Movie[];
+  documentaries: Movie[];
+}
+
+const Home = ({
+  netflixOriginals,
+  trending,
+  topRated,
+  actionMovies,
+  comedyMovies,
+  horrorMovies,
+  romanceMovies,
+  animationMovies,
+  kidsMovies,
+  documentaries,
+}: Props) => {
   return (
     <div className="relative h-screen bg-gradient-to-b from-gray-900 to-[#010511] ">
       <Head>
         <title>Home - QuaseNetflix</title>
-        </Head>
-        <Header/>
-        <main>
-          <Banner />
-          <section>
-           
-           
-          </section>
-        </main>
-     
+      </Head>
+      <Header />
+      <main>
+        <Banner />
+        <section></section>
+      </main>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
 
 export const getServerSideProps = async () => {
   const [
@@ -44,5 +64,19 @@ export const getServerSideProps = async () => {
     fetch(requests.fetchComedyMovies).then((res) => res.json()),
     fetch(requests.fetchHorrorMovies).then((res) => res.json()),
     fetch(requests.fetchRomanceMovies).then((res) => res.json()),
-    fetch(requests.fetchDocumentaries).then((res) => res.json()),])}
+    fetch(requests.fetchDocumentaries).then((res) => res.json()),
+  ]);
 
+  return {
+    props: {
+      netflixOriginals: netflixOriginals.results,
+      trending: trendindNow.results,
+      topRated: topRated.results,
+      actionMovies: actionMovies.results,
+      comedyMovies: comedyMovies.results,
+      horrorMovies: horrorMovies.results,
+      romanceMovies: romanceMovies.results,
+      documentaries: documentaries.results,
+    },
+  };
+};
