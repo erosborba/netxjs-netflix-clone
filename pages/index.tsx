@@ -6,7 +6,7 @@ import Row from "../components/Row";
 import { Movie } from "../typings";
 import requests from "../utils/requests";
 
-export const getServerSideProps = async () => {
+export async function getStaticProps() {
   const [
     netflixOriginals,
     trendindNow,
@@ -18,7 +18,7 @@ export const getServerSideProps = async () => {
     animationMovies,
     kidsMovies,
     documentaries,
-  ] = await Promise.all([
+  ] =  await Promise.all([
     fetch(requests.fetchNetflixOriginals).then((res) => res.json()),
     fetch(requests.fetchTrending).then((res) => res.json()),
     fetch(requests.fetchTopRated).then((res) => res.json()),
@@ -30,6 +30,7 @@ export const getServerSideProps = async () => {
     fetch(requests.fetchKidsMovies).then((res) => res.json()),
     fetch(requests.fetchDocumentaries).then((res) => res.json()),
   ]);
+
 
   return {
     props: {
@@ -83,7 +84,7 @@ const Home = ({
         <Header />
 
         <main className="relative pl-4 pb-24 lg:space-y-24 lg:pl-16">
-          {/* <Banner netflixOriginals={netflixOriginals} /> */}
+          <Banner netflixOriginals={netflixOriginals} />
           <section className="md:space-y-24">
             <Row title="Em alta" movies={trending} />
             <Row title="Mais Votados" movies={topRated} />

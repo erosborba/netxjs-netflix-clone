@@ -46,7 +46,7 @@ function Banner({ netflixOriginals }: Props) {
         </div>
       </div>
     )
-  ): null);
+  ): <>Banner Falhou</>);
 }
 
 export default Banner;
