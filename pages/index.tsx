@@ -72,8 +72,8 @@ const Home = ({
   kidsMovies,
   documentaries,
 }: Props) => {
-  return netflixOriginals ? (
-    (console.log("Index-log", netflixOriginals),
+  return (
+    console.log("Index-log", netflixOriginals),
     (
       <div className="relative h-screen bg-gradient-to-b from-gray-900/10 to-[#010511] lg:h-[140vh] ">
         <Head>
@@ -98,9 +98,7 @@ const Home = ({
           </section>
         </main>
       </div>
-    ))
-  ) : (
-    <div>Loading...</div>
+    )
   );
 };
 
