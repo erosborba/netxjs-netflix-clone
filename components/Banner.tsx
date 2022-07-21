@@ -14,7 +14,7 @@ function Banner({ netflixOriginals }: Props) {
   const [movie, setMovie] = useState<Movie>();
   useEffect(() => {
     setMovie(
-      netflixOriginals[Math.floor(Math.random() * netflixOriginals.length)]
+      netflixOriginals[Math.floor(Math.random() * netflixOriginals?.length)]
     );
   }, [netflixOriginals]);
 

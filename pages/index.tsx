@@ -6,7 +6,7 @@ import Row from "../components/Row";
 import { Movie } from "../typings";
 import requests from "../utils/requests";
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const [
     netflixOriginals,
     trendindNow,
