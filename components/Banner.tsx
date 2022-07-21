@@ -18,11 +18,11 @@ function Banner(netflixOriginals: Props) {
             netflixOriginals.netflixOriginals[Math.floor(Math.random() * netflixOriginals.netflixOriginals.length)]
         )
     : console.log('loading')} 
-,[netflixOriginals])
-    
+,[netflixOriginals.netflixOriginals])
+
   return (
-    <React.Fragment>
-    movie?
+    
+    
     <div className="flex flex-col space-y-2 py-16 md:space-y-4 lg:h-[65vh] lg:justify-end lg:pb-12">
     <div className="absolute top-0 left-0 -z-10 h-[95vh] w-screen">
       <img
@@ -45,7 +45,7 @@ function Banner(netflixOriginals: Props) {
         <button className='bannerButton bg-[gray]/70'>Mais Info<InformationCircleIcon className='h-5 w-5 md:h-8 md:w8' /></button>
     </div>
     </div>
-  : console.log("Loading 2") </React.Fragment>)
+   )
 }
 
 export default Banner
