@@ -1,25 +1,27 @@
 import { useState, useEffect } from "react";
 import { Movie } from "../typings";
 import { baseUrl } from "../utils/movie";
-import Image from "next/image";
 import { FaPlay } from "react-icons/fa";
 import { InformationCircleIcon } from "@heroicons/react/solid";
 import React from "react";
-import { getServerSideProps } from "../pages";
+
 
 interface Props {
   netflixOriginals: Movie[];
 }
 
-function Banner({netflixOriginals}: Props) {
+function Banner({ netflixOriginals }: Props) {
   const [movie, setMovie] = useState<Movie | null>(null);
   useEffect(() => {
     setMovie(
       netflixOriginals[Math.floor(Math.random() * netflixOriginals.length)]
-    )
-  }, [netflixOriginals])
-  
-    return (
+    );
+  }, [netflixOriginals]);
+
+  return (
+    console.log(movie),
+    netflixOriginals && movie ? (
+    (
       <div className="flex flex-col space-y-2 py-16 md:space-y-4 lg:h-[65vh] lg:justify-end lg:pb-12">
         <div className="absolute top-0 left-0 -z-10 h-[95vh] w-screen">
           <img
@@ -43,8 +45,8 @@ function Banner({netflixOriginals}: Props) {
           </button>
         </div>
       </div>
-    );
-
-} 
+    )
+  ):<div>Loading</div>);
+}
 
 export default Banner;

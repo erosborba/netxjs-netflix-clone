@@ -1,5 +1,4 @@
 import Head from "next/head";
-import Image from "next/image";
 import React from "react";
 import Banner from "../components/Banner";
 import Header from "../components/Header";
@@ -85,9 +84,9 @@ const Home = ({
       <Header />
 
       <main className="relative pl-4 pb-24 lg:space-y-24 lg:pl-16">
-        <Banner netflixOriginals={netflixOriginals || null} />
+        <Banner netflixOriginals={netflixOriginals } />
         <section className="md:space-y-24">
-          <Row title="Em alta" movies={trending || null} />
+          <Row title="Em alta" movies={trending} />
           <Row title="Mais Votados" movies={topRated} />
           <Row title="Ação" movies={actionMovies} />
           {/*mylist*/}
