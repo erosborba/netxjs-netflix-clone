@@ -18,9 +18,7 @@ export const getServerSideProps = async () => {
     animationMovies,
     kidsMovies,
     documentaries,
-  ] = await Promise.all(
-    [
-    
+  ] = await Promise.all([
     fetch(requests.fetchNetflixOriginals).then((res) => res.json()),
     fetch(requests.fetchTrending).then((res) => res.json()),
     fetch(requests.fetchTopRated).then((res) => res.json()),
@@ -74,33 +72,36 @@ const Home = ({
   kidsMovies,
   documentaries,
 }: Props) => {
-  return (
-    netflixOriginals ? (
-      console.log('Index-log',netflixOriginals),
-    <div className="relative h-screen bg-gradient-to-b from-gray-900/10 to-[#010511] lg:h-[140vh] ">
-      <Head>
-        <title>Home - QuaseNetflix</title>
-      </Head>
+  return netflixOriginals ? (
+    (console.log("Index-log", netflixOriginals),
+    (
+      <div className="relative h-screen bg-gradient-to-b from-gray-900/10 to-[#010511] lg:h-[140vh] ">
+        <Head>
+          <title>Home - QuaseNetflix</title>
+        </Head>
 
-      <Header />
+        <Header />
 
-      <main className="relative pl-4 pb-24 lg:space-y-24 lg:pl-16">
-        <Banner netflixOriginals={netflixOriginals } />
-        <section className="md:space-y-24">
-          <Row title="Em alta" movies={trending} />
-          <Row title="Mais Votados" movies={topRated} />
-          <Row title="Ação" movies={actionMovies} />
-          {/*mylist*/}
-          <Row title="Comédia" movies={comedyMovies} />
-          <Row title="Horror" movies={horrorMovies} />
-          <Row title="Romance" movies={romanceMovies} />
-          <Row title="Animação" movies={animationMovies} />
-          <Row title="Kids" movies={kidsMovies} />
-          <Row title="Documentários" movies={documentaries} />
-        </section>
-      </main>
-    </div>
-  ): Home);
+        <main className="relative pl-4 pb-24 lg:space-y-24 lg:pl-16">
+          <Banner netflixOriginals={netflixOriginals} />
+          <section className="md:space-y-24">
+            <Row title="Em alta" movies={trending} />
+            <Row title="Mais Votados" movies={topRated} />
+            <Row title="Ação" movies={actionMovies} />
+            {/*mylist*/}
+            <Row title="Comédia" movies={comedyMovies} />
+            <Row title="Horror" movies={horrorMovies} />
+            <Row title="Romance" movies={romanceMovies} />
+            <Row title="Animação" movies={animationMovies} />
+            <Row title="Kids" movies={kidsMovies} />
+            <Row title="Documentários" movies={documentaries} />
+          </section>
+        </main>
+      </div>
+    ))
+  ) : (
+    <div>Loading...</div>
+  );
 };
 
 export default Home;
