@@ -4,13 +4,13 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 function Header() {
-  const [isScroled, setIsScroled] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 0) {
-        setIsScroled(true);
+        setIsScrolled(true);
       } else {
-        setIsScroled(false);
+        setIsScrolled(false);
       }
     }
     window.addEventListener("scroll", handleScroll);
@@ -19,7 +19,7 @@ function Header() {
     }
   },[])
   return (
-    <header className={`${isScroled && 'bg-[141414]'}`} >
+    <header className={`${isScrolled && 'bg-[#141414]'}`}>
       <div className="flex items-center space-x-2 md:space-x-10">
         <Image
           src="/images/netflix-logo.svg"
