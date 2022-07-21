@@ -21,7 +21,7 @@ function Header() {
   return (
     <header className={`${isScrolled && 'bg-[#141414]'}`}>
       <div className="flex items-center space-x-2 md:space-x-10">
-        <Image
+        <img
           src="/images/netflix-logo.svg"
           alt="Quaseflix-logo"
           width={100}

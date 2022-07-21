@@ -12,19 +12,22 @@ interface Props {
 function Banner(netflixOriginals: Props) {
     const [movie, setMovie] = useState<Movie | null>()
     useEffect(() => {
+      netflixOriginals ?
         setMovie(
-            netflixOriginals.netflixOriginals[Math.floor(Math.random() * netflixOriginals.netflixOriginals?.length)]
+            netflixOriginals.netflixOriginals[Math.floor(Math.random() * netflixOriginals.netflixOriginals.length)]
         )
-    },[netflixOriginals])
+    : console.log('loading')} 
+,[netflixOriginals])
     
   return (
+    movie?
     <div className="flex flex-col space-y-2 py-16 md:space-y-4 lg:h-[65vh] lg:justify-end lg:pb-12">
     <div className="absolute top-0 left-0 -z-10 h-[95vh] w-screen">
-      <Image
-        layout="fill"
+      <img
+        
         src={`${baseUrl}${movie?.backdrop_path || movie?.poster_path}`}
-        objectFit="cover"
-        priority={true}
+        
+        
       />
     </div>
 
@@ -40,7 +43,7 @@ function Banner(netflixOriginals: Props) {
         <button className='bannerButton bg-[gray]/70'>Mais Info<InformationCircleIcon className='h-5 w-5 md:h-8 md:w8' /></button>
     </div>
     </div>
-  )
+  : console.log("Loading 2"))
 }
 
 export default Banner
