@@ -15,7 +15,7 @@ function Banner(netflixOriginals: Props) {
   useEffect(() => {
     setMovie(
       netflixOriginals?.netflixOriginals[
-        Math.floor(Math.random() * netflixOriginals.netflixOriginals.length)
+        Math.floor(Math.random() * netflixOriginals?.netflixOriginals.length || 0)
       ]
     );
   }, [netflixOriginals]);
