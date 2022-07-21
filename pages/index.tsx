@@ -43,7 +43,7 @@ const Home = ({
         <Banner netflixOriginals={netflixOriginals}/>
         <section className='md:space-y-24'>
           <Row title='Em alta' movies={trending}/>
-          <Row title='Top rated' movies={topRated}/>
+          <Row title='Mais Votados' movies={topRated}/>
           <Row title='Ação' movies={actionMovies}/>
           {/*mylist*/}
           <Row title='Comédia' movies={comedyMovies}/>
@@ -71,6 +71,8 @@ export const getServerSideProps = async () => {
     comedyMovies,
     horrorMovies,
     romanceMovies,
+    animationMovies,
+    kidsMovies,
     documentaries,
   ] = await Promise.all([
     fetch(requests.fetchNetflixOriginals).then((res) => res.json()),
@@ -80,6 +82,8 @@ export const getServerSideProps = async () => {
     fetch(requests.fetchComedyMovies).then((res) => res.json()),
     fetch(requests.fetchHorrorMovies).then((res) => res.json()),
     fetch(requests.fetchRomanceMovies).then((res) => res.json()),
+    fetch(requests.fetchAnimatedMovies).then((res) => res.json()),
+    fetch(requests.fetchKidsMovies).then((res) => res.json()),
     fetch(requests.fetchDocumentaries).then((res) => res.json()),
   ]);
 
@@ -92,6 +96,8 @@ export const getServerSideProps = async () => {
       comedyMovies: comedyMovies.results,
       horrorMovies: horrorMovies.results,
       romanceMovies: romanceMovies.results,
+      animationMovies: animationMovies.results,
+      kidsMovies: kidsMovies.results,
       documentaries: documentaries.results,
     },
   };
