@@ -100,7 +100,7 @@ const Home = ({
         </section>
       </main>
     </div>
-  ):null);
+  ): Home);
 };
 
 export default Home;
