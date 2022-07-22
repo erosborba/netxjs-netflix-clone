@@ -15,7 +15,7 @@ export async function getServerSideProps() {
     comedyMovies,
     horrorMovies,
     romanceMovies,
-    animationMovies,
+    documentaries,
   ] = await Promise.all([
     fetch(requests.fetchNetflixOriginals).then((res) => res.json()),
     fetch(requests.fetchTrending).then((res) => res.json()),
@@ -36,7 +36,7 @@ export async function getServerSideProps() {
       comedyMovies: comedyMovies.results,
       horrorMovies: horrorMovies.results,
       romanceMovies: romanceMovies.results,
-      animationMovies: animationMovies.results,
+      documentaries: documentaries.results,
     },
   };
 }
@@ -49,8 +49,6 @@ interface Props {
   comedyMovies: Movie[];
   horrorMovies: Movie[];
   romanceMovies: Movie[];
-  animationMovies: Movie[];
-  kidsMovies: Movie[];
   documentaries: Movie[];
 }
 
@@ -62,8 +60,6 @@ const Home = ({
   comedyMovies,
   horrorMovies,
   romanceMovies,
-  animationMovies,
-  kidsMovies,
   documentaries,
 }: Props) => {
   return (
