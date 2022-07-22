@@ -1,5 +1,6 @@
 import Head from "next/head";
-import React from "react";
+import React, { Suspense } from "react";
+import { promises } from "stream";
 import Banner from "../components/Banner";
 import Header from "../components/Header";
 import Row from "../components/Row";
@@ -14,7 +15,7 @@ export async function getServerSideProps() {
     actionMovies,
     comedyMovies,
     horrorMovies,
-    romanceMovies,
+    romanceMovies, 
     animationMovies,
     kidsMovies,
     documentaries,
@@ -75,6 +76,7 @@ const Home = ({
 }: Props) => {
   return (
     console.log("Index-log", netflixOriginals),
+    <Suspense>
     (
       <div className="relative h-screen bg-gradient-to-b from-gray-900/10 to-[#010511] lg:h-[140vh] ">
         <Head>
@@ -99,7 +101,7 @@ const Home = ({
           </section>
         </main>
       </div>
-    )
+    )</Suspense>
   );
 };
 
