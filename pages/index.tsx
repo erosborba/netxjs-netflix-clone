@@ -16,8 +16,6 @@ export async function getServerSideProps() {
     horrorMovies,
     romanceMovies,
     animationMovies,
-    kidsMovies,
-    documentaries,
   ] = await Promise.all([
     fetch(requests.fetchNetflixOriginals).then((res) => res.json()),
     fetch(requests.fetchTrending).then((res) => res.json()),
@@ -26,8 +24,6 @@ export async function getServerSideProps() {
     fetch(requests.fetchComedyMovies).then((res) => res.json()),
     fetch(requests.fetchHorrorMovies).then((res) => res.json()),
     fetch(requests.fetchRomanceMovies).then((res) => res.json()),
-    fetch(requests.fetchAnimatedMovies).then((res) => res.json()),
-    fetch(requests.fetchKidsMovies).then((res) => res.json()),
     fetch(requests.fetchDocumentaries).then((res) => res.json()),
   ]);
 
@@ -41,8 +37,6 @@ export async function getServerSideProps() {
       horrorMovies: horrorMovies.results,
       romanceMovies: romanceMovies.results,
       animationMovies: animationMovies.results,
-      kidsMovies: kidsMovies.results,
-      documentaries: documentaries.results,
     },
   };
 }
@@ -90,8 +84,6 @@ const Home = ({
           <Row title="Comédia" movies={comedyMovies} />
           <Row title="Horror" movies={horrorMovies} />
           <Row title="Romance" movies={romanceMovies} />
-          <Row title="Animação" movies={animationMovies} />
-          <Row title="Kids" movies={kidsMovies} />
           <Row title="Documentários" movies={documentaries} />
         </section>
       </main>
