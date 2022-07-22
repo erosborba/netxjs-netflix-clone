@@ -10,7 +10,7 @@ interface Props {
 }
 
 function Banner({ netflixOriginals }: Props) {
-  const [movie, setMovie] = useState<Movie>();
+  const [movie, setMovie] = useState<Movie>(netflixOriginals[0]);
   useEffect(() => {
     setMovie(
       netflixOriginals[Math.floor(Math.random() * netflixOriginals?.length)]
