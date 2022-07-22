@@ -1,4 +1,4 @@
-import { useState, useEffect, Suspense } from "react";
+import { useState, useEffect } from "react";
 import { Movie } from "../typings";
 import { baseUrl } from "../utils/movie";
 import { FaPlay } from "react-icons/fa";

@@ -1,6 +1,5 @@
 import Head from "next/head";
-import React, { Suspense } from "react";
-import { promises } from "stream";
+import React from "react";
 import Banner from "../components/Banner";
 import Header from "../components/Header";
 import Row from "../components/Row";
