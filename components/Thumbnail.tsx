@@ -1,5 +1,6 @@
 import React from "react";
 import { Movie } from "../typings";
+import Image from "next/image";
 
 
 interface Props {
@@ -14,12 +15,14 @@ function Thumbnail({ movie }: Props) {
         console.log(movie.id);
       }}
     >
-      <img
+      <Image
         src={`https://image.tmdb.org/t/p/w500${
           movie.backdrop_path || movie.poster_path
         }`}
         className="rounded-sm object-cover md:rounded"
         alt={movie.title}
+        layout="fill"
+        objectFit="cover"
       />
     </div>
   );
