@@ -19,7 +19,7 @@ function login() {
   } = useForm<Inputs>();
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     if (login) {
-        ;
+        
     } else {
         
     }
